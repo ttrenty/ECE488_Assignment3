@@ -1,0 +1,39 @@
+# python stuff
+*.pyc
+__pycache__/
+.vscode/
+
+# LaTex stuff
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+*.lb
+*.glo
+*.idx
+*.gls
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.glsdefs
+*.loa
+*.bbl*
+*.bcf
+*.xml
+*.synctex.*
+*.blg
+
+# generated assignment artifacts
+output/
+
+ece484_assignement_3_draft/
+*.zip

@@ -1,0 +1,50 @@
+[workspace]
+channels = ["conda-forge"]
+name = "ECE484-assignment3"
+platforms = [
+    "linux-64",
+] # You might want to change this to match your platform, e.g., "osx-64" for macOS or "win-64" for Windows for example.
+version = "1.1.0"
+
+[environments]
+qiskit = ["qiskit"]
+squlearn = ["squlearn"]
+
+[tasks]
+
+tests_qiskit = "pytest -v -s -m 'not slow' tests/test_Q1.py tests/test_Q2.py tests/test_Q3.py"
+tests_q1 = "pytest -v -s tests/test_Q1.py"
+tests_q2 = "pytest -v -s tests/test_Q2.py"
+tests_q3 = "pytest -v -s -m 'not slow' tests/test_Q3.py"
+tests_q3_reuploading_sweep = "pytest -v -s tests/test_Q3.py::test_model_selection_reuploading_sweep_reports_validation_trend"
+
+tests_squlearn = "pytest -v -s tests/test_Q4.py"
+tests_q4 = "pytest -v -s tests/test_Q4.py"
+
+format = "black src tests || true"
+lint = "ruff check src tests || true"
+python = "python"
+clean = "find . -type f \\( -name '*.aux' -o -name '*.log' -o -name '*.out' -o -name '*.acn' -o -name '*.bcf' -o -name '*.glo' -o -name '*.ist' -o -name '*.xml' -o -name '*.acr' -o -name '*.alg' -o -name '*.gls' -o -name '*.gz' -o -name '*.bbl' -o -name '*.blg' -o -name '*.glg' \\) -delete && find output -mindepth 1 ! -name '.gitkeep' -delete"
+
+[dependencies]
+python = ">=3.11,<3.12"
+numpy = ">=2,<3"
+scikit-learn = ">=1.5,<1.6"
+matplotlib = ">=3.9,<3.11"
+seaborn = ">=0.13,<0.14"
+pytest = ">=8.3,<9"
+black = ">=24.10,<25"
+ruff = ">=0.8,<0.9"
+pyyaml = ">=6.0,<7"
+
+[feature.qiskit.pypi-dependencies]
+qiskit = ">=2.3,<3"
+qiskit-aer = ">=0.17,<0.18"
+qiskit-machine-learning = ">=0.9,<1"
+
+[feature.qiskit.dependencies]
+pytorch = ">=2.5,<2.7"
+
+[feature.squlearn.pypi-dependencies]
+squlearn = ">=0.10.1,<0.11"
+pylatexenc = ">=2.10,<3"

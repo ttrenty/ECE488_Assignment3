@@ -1,0 +1,37 @@
+{
+    "name": "Assignment 1 (Pixi: Python + Qiskit + PennyLane)",
+    // Runs once when the Codespace is created (and during prebuilds)
+    "onCreateCommand": "bash .devcontainer/setup-pixi.sh",
+    // Re-sync env when repo content changes during creation
+    "updateContentCommand": "bash .devcontainer/update-content.sh",
+    // Open README in rendered view (Preview) after VS Code attaches
+    // Use "markdown.showPreviewToSide" if you prefer a split view
+    // "postAttachCommand": "code --command markdown.showPreview README.md",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "github.vscode-github-actions",
+                "ms-azuretools.vscode-docker",
+                "EditorConfig.EditorConfig",
+                "tomoki1207.pdf"
+            ],
+            "settings": {
+                // ✅ Show the README as the first tab in rendered preview (when at repo root)
+                "workbench.startupEditor": "readme",
+                "python.defaultInterpreterPath": "${workspaceFolder}/.pixi/envs/default/bin/python",
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "files.insertFinalNewline": true,
+                "files.trimTrailingWhitespace": true,
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "ms-python.python",
+            }
+        }
+    },
+    // Make these available to terminal shells
+    "remoteEnv": {
+        "WORKSPACE_FOLDER": "${containerWorkspaceFolder}",
+        "PATH": "/usr/local/bin:/home/codespace/.pixi/bin:${containerEnv:PATH}"
+    }
+}
